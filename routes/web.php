@@ -21,5 +21,11 @@ Route::get('/kontakt', function () {
 });
 
 Route::get('/onas', function () {
-    return view('ogolne.onas');
+    $zadania = [
+        'Zadanie 1',
+        'Zadanie 2',
+        'Zadanie 3'
+    ];
+    //return view('ogolne.onas',['zadania' => $zadania]);
+    return view('ogolne.onas', compact('zadania'));
 });
