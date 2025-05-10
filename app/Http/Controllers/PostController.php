@@ -14,7 +14,9 @@ class PostController extends Controller
     public function index()
     {
         //
-        return "index";
+        //return "index";
+        $posty = Post::all();
+        return view('post.index',compact('posty'));
     }
 
     /**
@@ -44,7 +46,7 @@ class PostController extends Controller
         ]); */
         
         $post->create($request->all());
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('message', "Dodano poprawnie posta");
     }
 
     /**
@@ -53,7 +55,8 @@ class PostController extends Controller
     public function show(Post $post)
     //public function show(string $post)
     {
-        return "show + post: $post";
+        //return "show + post: $post";
+        return view('post.show',compact('post'));
     }
 
     /**
@@ -61,15 +64,19 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return "edit + post: $post";
+        //return "edit + post: $post";
+        return view('post.edit',compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostStoreRequest $request, Post $post)
     {
-        return "update + post: $post";
+        
+        //return "update + post: $post";
+        $post->update($request->all());
+        return redirect()->route('post.index')->with('message', "Zmieniono poprawnie posta");
     }
 
     /**
@@ -77,6 +84,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        return "destroy + post: $post";
+        //return "destroy + post: $post";
+        $post->delete();
+        return redirect()->route('post.index')->with('message', "Usunięto poprawnie posta")->with('class', 'danger');
     }
 }
