@@ -11,7 +11,10 @@
                 <th scope="col">Tytuł</th>
                 <th scope="col">Autor</th>
                 <th scope="col">Data powstania</th>
-                <th scope="col">Akcja</th>
+                @auth
+                <th scope="col">Akcja</th>                    
+                @endauth
+
             </thead>
             <tbody>
                 @php($lp=1)
@@ -21,6 +24,7 @@
                         <td><a href="{{route('post.show',$post->id)}}">{{$post->tytul}}</a></td>
                         <td>{{$post->autor}}</td>
                         <td>{{date('j F Y',strtotime($post->created_at))}}</td>
+                        @auth
                         <td class="d-flex">
                             <a href="{{route('post.edit',$post->id)}}">
                                 <button class="btn btn-success m-1" type="submit">E</button>
@@ -30,7 +34,9 @@
                                 @method('DELETE')
                                 <button class="btn btn-danger m-1" type="submit">X</button>
                             </form>
-                        </td>
+                        </td>                            
+                        @endauth
+
                     </tr>
                 @endforeach
             </tbody>

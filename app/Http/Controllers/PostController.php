@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -16,7 +20,7 @@ class PostController extends Controller
         //
         //return "index";
         $posty = Post::all();
-        return view('post.index',compact('posty'));
+        return view('post.index', compact('posty'));
     }
 
     /**

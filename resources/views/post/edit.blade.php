@@ -42,8 +42,9 @@
                 <div style="color:red">{{$message}}</div>
             @enderror
         </div>
-        <button class="btn btn-success m-1" type="submit">Dodaj post</button>
+        <button class="btn btn-success m-1" type="submit">Zmień post</button>
     </form>
+    <a href="{{route('post.index')}}"><button class="btn btn-primary m-1" type="submit">Powrót do listy</button></a>
 @endisset
 
 @endsection
