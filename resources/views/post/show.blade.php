@@ -9,11 +9,11 @@
         </div>
         <div class="for-group">
             <label for="autor" class="form-label">Autor</label>
-            <input type="text" class="form-control" id="autor" name="autor" value="{{$post->autor}}" disabled>
+            <input type="text" class="form-control" id="autor" name="autor" value="{{$post->user->name}}" disabled>
         </div>
         <div class="for-group">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{$post->email}}" disabled>
+            <input type="email" class="form-control" id="email" name="email" value="{{$post->user->email}}" disabled>
         </div>
         <div>Data utworzenia: <b>{{date('j F Y',strtotime($post->created_at))}}</b></div>
         <div>Data edycji: <b>{{date('j F Y',strtotime($post->updated_at))}}</b></div>

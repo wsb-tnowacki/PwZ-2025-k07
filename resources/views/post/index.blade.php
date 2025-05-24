@@ -17,12 +17,13 @@
 
             </thead>
             <tbody>
-                @php($lp=1)
+                {{-- @php($lp=1) --}}
+                @php($lp=$posty->firstItem())
                 @foreach ($posty as $post)
                     <tr>
                         <td>{{$lp++}}</td>
                         <td><a href="{{route('post.show',$post->id)}}">{{$post->tytul}}</a></td>
-                        <td>{{$post->autor}}</td>
+                        <td>{{$post->user->name}}</td>
                         <td>{{date('j F Y',strtotime($post->created_at))}}</td>
                         @auth
                         <td class="d-flex">
@@ -41,6 +42,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{$posty->links()}}
     @else
         <div>Nie ma żadnych postów</div>
     @endif
